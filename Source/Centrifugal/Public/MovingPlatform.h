@@ -58,53 +58,53 @@ public:
 	void LoopFromBeginning();
 
 	/** Whether the platform loops when it reaches an end point. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	bool bLoop;
 
 	/** Whether the platform moves. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	bool bMovePlatform;
 
 	/** Whether the platform waits when it reaches the beginning or end of its track. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	bool bWaitAtEndpoints;
 
 	/** Stop the platform when it hits a solid object. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	bool bStopOnHit;
 
 	/** Whether we use the track's roll rotation.
 	 *  *** Warning! Enabling Roll can have unexpected results ***
 	 */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	bool bUseTrackRoll;
 
 	/** Whether we use the track's pitch rotation. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	bool bUseTrackPitch;
 
 	/** Whether we use the track's yaw rotation. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	bool bUseTrackYaw;
 
 	/** How long the platform will wait at the beginning and end of its track before moving again. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	float PlatformEndpointWaitTime;
 
 	/** Where the platform starts on the track. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	float PlatformStartTime;
 
 	/** How long it takes to get from one end of the track to the other. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	float TrackDuration;
 
 	/** 1 = forward, -1 = backward. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	EPlatformDirection PlatformStartDirection;
 
 	/** How to handle reaching the beginning or end of the Track spline. */
-	UPROPERTY(BlueprintReadWrite, Category = "Platform")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Platform")
 	EPlatformMovement PlatformMovement;
 
 protected:
