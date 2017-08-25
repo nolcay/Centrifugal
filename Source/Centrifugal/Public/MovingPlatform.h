@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Runtime/Engine/Classes/Components/SplineComponent.h"
 #include "MovingPlatform.generated.h"
 
 
@@ -42,7 +43,19 @@ public:
 	void SetPlatformDirection(EPlatformDirection val) { _PlatformDirection = val; }
 
 	UFUNCTION(BlueprintCallable, Category = "Platform")
-	void UpdatePlatformTime(USplineComponent* TrackSpline);
+	void UpdatePlatformTime();
+
+	UFUNCTION(BlueprintCallable, Category = "Platform")
+	void SetPlatformLocationAndRotation(bool bSweep = false);
+
+	UFUNCTION(BlueprintCallable, Category = "Platform")
+	bool WasEndpointReached();
+
+	UFUNCTION(BlueprintCallable, Category = "Platform")
+	void PingPong();
+
+	UFUNCTION(BlueprintCallable, Category = "Platform")
+	void LoopFromBeginning();
 
 	/** Whether the platform loops when it reaches an end point. */
 	UPROPERTY(BlueprintReadWrite, Category = "Platform")
@@ -68,7 +81,7 @@ public:
 
 	/** Whether we use the track's pitch rotation. */
 	UPROPERTY(BlueprintReadWrite, Category = "Platform")
-	bool buseTrackPitch;
+	bool bUseTrackPitch;
 
 	/** Whether we use the track's yaw rotation. */
 	UPROPERTY(BlueprintReadWrite, Category = "Platform")
@@ -98,6 +111,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual void OnConstruction(const FTransform& Transform) override;
+
+	void PingPongDelayFinished();
+
 	/** Time/distance traveled along the path. */
 	UPROPERTY(BlueprintReadOnly, Category = "Platform")
 	float _PlatformTime;
@@ -112,6 +129,8 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Platform")
 	EPlatformDirection _PlatformDirection;
 
+	USplineComponent* _Track;
+	UStaticMeshComponent* _MovingPlatformMesh;
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
